@@ -10,6 +10,8 @@ class Rover {
    }
 
 receiveMessage(message){
+
+
 let response = {
    message: message.name,
    results: []
@@ -26,7 +28,6 @@ for (let i=0;i < message.commands.length;i++){
 return response
 }
 
-
 moveCommand(moveTest){
    let result = {
       completed: true
@@ -42,9 +43,9 @@ moveCommand(moveTest){
 statusCommand(){
 
    let roverProperties = {
-      mode: rover.mode,
-      generatorWatts: rover.generatorWatts,
-      position: rover.position
+      mode: this.mode,
+      generatorWatts: this.generatorWatts,
+      position: this.position
    }
 
    let result = {
@@ -70,9 +71,9 @@ return result
 
 // let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
 // let commands = [new Command('MOVE', 10)]
-let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
+// let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
 // let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('MOVE', 10)];
-
+let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK'), new Command('MOVE', 20)];
 let message = new Message('Test message with two commands', commands);
 let rover = new Rover(98382);    // Passes 98382 as the rover's position.
 let response = rover.receiveMessage(message);
